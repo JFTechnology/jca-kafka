@@ -18,14 +18,15 @@
 	</modules>
 
 	<properties>
-		<!-- Explicitly declaring the source encoding eliminates the following message: -->
-		<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent! -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
 		<version.org.apache.kafka>1.1.0</version.org.apache.kafka>
 
 		<!-- maven-compiler-plugin -->
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.source>1.8</maven.compiler.source>
+		<targetJdk>1.8</targetJdk>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
 	</properties>
 
 	<dependencyManagement>
@@ -48,13 +49,6 @@
 			<dependency>
 				<groupId>com.jftechnology.jca.kafka</groupId>
 				<artifactId>com.jftechnology.jca.kafka.api</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-
-			<!-- Make own artifacts available -->
-			<dependency>
-				<groupId>com.jftechnology.jca</groupId>
-				<artifactId>com.jftechnology.jca.kafka.rar</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
