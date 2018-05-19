@@ -33,7 +33,7 @@ import com.jftechnology.jca.kafka.api.KafkaListener;
                 @ActivationConfigProperty(propertyName = "groupId", propertyValue = "test-group-3"),
                 @ActivationConfigProperty(propertyName = "topics", propertyValue = "test-3"),
                 @ActivationConfigProperty(propertyName = "poolSize", propertyValue = "2")})
-@ResourceAdapter("com.jftechnology.jca.kafka.rar-rar.rar")
+@ResourceAdapter("com.jftechnology.jca.kafka.rar")
 public class MessageConsumer3 implements KafkaListener<String, String> {
 
     /**

@@ -77,7 +77,7 @@ public class KafkaResourceAdapter implements ResourceAdapter, Serializable {
 
     @ConfigProperty(
             type = String.class,
-            defaultValue = "org.apache.kafka.common.serialization.StringSerializer",
+            defaultValue = "org.apache.kafka.common.serialization.StringDeserializer",
             description = ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG)
     private String keyDeserializer;
 

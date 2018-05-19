@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.jftechnology.jca.kafka</groupId>
 		<artifactId>bom</artifactId>
-		<version>0.1.1</version>
+		<version>0.1.2</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
 	<artifactId>test-app</artifactId>
 	<packaging>war</packaging>
 
-	<name>Kafka JCA :: Test WAR application</name>
+	<name>JCA :: Kafka :: Test WAR application</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>

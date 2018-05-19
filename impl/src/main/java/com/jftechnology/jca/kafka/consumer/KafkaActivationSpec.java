@@ -56,6 +56,8 @@ public class KafkaActivationSpec implements ActivationSpec {
 
     private String topics;
 
+    private String topicPattern;
+
     private Integer poolSize = 1;
 
     private Long pollInterval = 5L;
@@ -363,6 +365,28 @@ public class KafkaActivationSpec implements ActivationSpec {
     public void setTopics(String topics) {
 
         this.topics = topics;
+    }
+
+    /**
+     * Get the topicPattern property.
+     *
+     * @return Returns the topicPattern.
+     * @since 1.0
+     */
+    public String getTopicPattern() {
+
+        return topicPattern;
+    }
+
+    /**
+     * Set the topicPattern property.
+     *
+     * @param topicPattern The topicPattern to set.
+     * @since 1.0
+     */
+    public void setTopicPattern(String topicPattern) {
+
+        this.topicPattern = topicPattern;
     }
 
     /**
