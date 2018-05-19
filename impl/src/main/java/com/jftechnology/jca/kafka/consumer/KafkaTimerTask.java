@@ -21,6 +21,7 @@ import java.util.TimerTask;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import javax.resource.spi.BootstrapContext;
 import javax.resource.spi.endpoint.MessageEndpointFactory;
@@ -70,9 +71,18 @@ class KafkaTimerTask extends TimerTask {
         // set up consumer and subscribe
         consumer = new KafkaConsumer<>(properties);
 
-        consumer.subscribe(activationSpec.getTopicList());
+        if (activationSpec.getTopicPattern() != null && !activationSpec.getTopicPattern().trim().isEmpty()) {
 
-        LOGGER.info("KafkaTimerTask :: created :: " + id);
+            Pattern pattern = Pattern.compile(activationSpec.getTopicPattern());
+            consumer.subscribe(pattern);
+            LOGGER.info(String.format("KafkaTimerTask :: subscribed to topic pattern %s :: %s", pattern, id));
+
+        } else {
+
+            consumer.subscribe(activationSpec.getTopicList());
+            LOGGER.info(String.format("KafkaTimerTask :: subscribed to topic list %s :: %s",
+                    activationSpec.getTopicList(), id));
+        }
     }
 
     /**

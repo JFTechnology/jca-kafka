@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 >
-	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>com.jftechnology.jca.kafka</groupId>
@@ -9,15 +8,17 @@
 		<version>0.1.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>com.jftechnology.jca.kafka.api</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>com.jftechnology.jca.kafka.impl</artifactId>
 	<packaging>jar</packaging>
 
-	<name>JCA :: Kafka :: API</name>
+	<name>JCA :: Kafka :: Implementation</name>
 	<url>http://maven.apache.org</url>
+
 
 	<dependencies>
 
-		<!-- Provided scoped artifact(s) -->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
@@ -26,6 +27,11 @@
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
 			<artifactId>kafka-clients</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jftechnology.jca.kafka</groupId>
+			<artifactId>com.jftechnology.jca.kafka.api</artifactId>
 		</dependency>
 
 	</dependencies>

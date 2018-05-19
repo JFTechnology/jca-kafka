@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018 JF Technology (UK) Ltd -->
+
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); -->
+<!-- you may not use this file except in compliance with the License. -->
+<!-- You may obtain a copy of the License at -->
+<!-- -->
+<!-- http://www.apache.org/licenses/LICENSE-2.0 -->
+<!-- -->
+<!-- Unless required by applicable law or agreed to in writing, software -->
+<!-- distributed under the License is distributed on an "AS IS" BASIS, -->
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
+<!-- See the License for the specific language governing permissions and -->
+<!-- limitations under the License. -->
+
+<connector xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+    http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd" version="1.5"
+>
+	<description>Apache Kafka inbound and outbound ResourceAdapter</description>
+	<display-name>Apache Kafka inbound and outbound ResourceAdapter</display-name>
+	<vendor-name>JF Technology (UK) Ltd</vendor-name>
+	<eis-type>Apache Kafka 1.1.0</eis-type>
+	<resourceadapter-version>1.0</resourceadapter-version>
+	<license>
+		<description>
+			Copyright 2018 JF Technology (UK) Ltd
+			
+			Licensed under the Apache License, Version 2.0 (the "License");
+			you may not use this file except in compliance with the License.
+			You may obtain a copy of the License at
+			
+			        http://www.apache.org/licenses/LICENSE-2.0
+			        
+			Unless required by applicable law or agreed to in writing, software
+			distributed under the License is distributed on an "AS IS" BASIS,
+			WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+			See the License for the specific language governing permissions and
+			limitations under the License.
+        </description>
+		<license-required>true</license-required>
+	</license>
+	<resourceadapter>
+		<resourceadapter-class>com.jftechnology.jca.kafka.consumer.KafkaResourceAdapter</resourceadapter-class>
+
+		<config-property>
+			<config-property-name>bootstrapServers</config-property-name>
+			<config-property-type>java.lang.String</config-property-type>
+			<config-property-value>localhost:9092</config-property-value>
+		</config-property>
+		<config-property>
+			<config-property-name>keyDeserializer</config-property-name>
+			<config-property-type>java.lang.String</config-property-type>
+			<config-property-value>org.apache.kafka.common.serialization.StringDeserializer</config-property-value>
+		</config-property>
+		<config-property>
+			<config-property-name>valueSerializer</config-property-name>
+			<config-property-type>java.lang.String</config-property-type>
+			<config-property-value>org.apache.kafka.common.serialization.StringSerializer</config-property-value>
+		</config-property>
+		<config-property>
+			<config-property-name>keySerializer</config-property-name>
+			<config-property-type>java.lang.String</config-property-type>
+			<config-property-value>org.apache.kafka.common.serialization.StringSerializer</config-property-value>
+		</config-property>
+		<config-property>
+			<config-property-name>valueDeserializer</config-property-name>
+			<config-property-type>java.lang.String</config-property-type>
+			<config-property-value>org.apache.kafka.common.serialization.StringDeserializer</config-property-value>
+		</config-property>
+		<config-property>
+			<config-property-name>fetchMaxWaitMs</config-property-name>
+			<config-property-type>java.lang.Integer</config-property-type>
+			<config-property-value>1000</config-property-value>
+		</config-property>
+
+		<outbound-resourceadapter>
+			<connection-definition>
+				<managedconnectionfactory-class>com.jftechnology.jca.kafka.producer.KafkaManagedConnectionFactory</managedconnectionfactory-class>
+				<connectionfactory-interface>com.jftechnology.jca.kafka.api.KafkaProducerFactory</connectionfactory-interface>
+				<connectionfactory-impl-class>com.jftechnology.jca.kafka.producer.KafkaProducerFactoryImpl</connectionfactory-impl-class>
+				<connection-interface>org.apache.kafka.clients.producer.Producer</connection-interface>
+				<connection-impl-class>org.apache.kafka.clients.producer.KafkaProducer</connection-impl-class>
+			</connection-definition>
+			<transaction-support>NoTransaction</transaction-support>
+			<reauthentication-support>false</reauthentication-support>
+		</outbound-resourceadapter>
+
+		<inbound-resourceadapter>
+			<messageadapter>
+				<messagelistener>
+					<messagelistener-type>com.jftechnology.jca.kafka.api.KafkaListener</messagelistener-type>
+					<activationspec>
+						<activationspec-class>com.jftechnology.jca.kafka.consumer.KafkaActivationSpec</activationspec-class>
+					</activationspec>
+				</messagelistener>
+			</messageadapter>
+		</inbound-resourceadapter>
+
+	</resourceadapter>
+</connector>
