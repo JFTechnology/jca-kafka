@@ -3,7 +3,7 @@
 
 	<groupId>com.jftechnology.jca.kafka</groupId>
 	<artifactId>bom</artifactId>
-	<version>0.1.2</version>
+	<version>0.1.3</version>
 	<packaging>pom</packaging>
 
 	<name>JCA :: Kafka :: Bill of materials</name>
@@ -125,5 +125,18 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>s3-bucket-release</id>
+			<url>s3://maven.jftechnology.com/release</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 </project>
